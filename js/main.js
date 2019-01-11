@@ -26,6 +26,18 @@ const stylingProcess = `<div class="mainLogoCont"><p class="textP" tabIndex="0">
 const contact = `<div class="mainContactCont">
                       <span class="contactTxt" tabIndex="0">PHONE: +1 310-854-9888</span>
                       <span class="contactTxt" tabIndex="0">myBusiness@email.com</span>
+                      <form className="quickMailForm" action="/GSmailer.php" method="post">
+                        <input type="hidden" name="initializer" value="Sent_From_Quick_Contact_Button"/>
+                        <label className="quickMailInputLabel">Full Name: </label>
+                        <input required className="quickMailInputTxt" type="text" name="full_name" aria-label="full name"></input>
+                        <label className="quickMailInputLabel">Address: </label>
+                        <input required className="quickMailInputTxt" type="text" name="adress" aria-label="adress"></input>
+                        <label className="quickMailInputLabel">E-Mail: </label>
+                        <input required className="quickMailInputTxt" type="email" name="email"></input>
+                        <label className="quickMailInputLabel">Message: </label>
+                        <textarea rows="9" className="quickMailInputTxt" name="your_message" aria-label="your message"></textarea>
+                        <input className="quickFormSubmitBtn" type="submit" name="submit" value="Submit"/>
+                      </form>
                  </div>`;
 
 window.onload = function () {
