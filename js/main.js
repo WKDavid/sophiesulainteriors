@@ -3,41 +3,38 @@ const mainTemplate  = document.getElementsByClassName("center-template")[0];
 const homePage = `<div class="mainLogoCont"><img class="mainLogoImg" src="img/socialrest/SLogoBLK.png" alt="logo"/></div>`;
 
 const about = `<div class="mainLogoCont"><p class="textP" tabIndex="0">
-                  ABOUT TEXT PLACEHOLDER
-                  Lorem ipsum dolor sit amet, per et prima tantas omittantur, ne ipsum dicta mel. Unum vivendo ea nam, sed scripta graecis ad. Nisl vero cum ea.
-                  Per quod patrioque in. Nihil noluisse sapientem cum in, fugit malorum pro ei. Dictas senserit concludaturque ne eos, vidisse menandri conclusionemque sed in.
-                  Ei sanctus saperet splendide vis. Id eruditi assueverit sed. Vis similique vulputate ex, unum labitur ei his.
+                  Sophie Sula Staging company was established to serve the Los Angeles region and surrounding cities.
+                  We use a personal and individualized approach creating custom designs for every room and every house.
+                  Reasonable pricing with high quality furnishings and affordable fees is what our clients can expect from us.
                 </p></div>`;
 
 const ourMission = `<div class="mainLogoCont"><p class="textP" tabIndex="0">
-                      OUR MISSION TEXT PLACEHOLDER
-                      Lorem ipsum dolor sit amet, per et prima tantas omittantur, ne ipsum dicta mel. Unum vivendo ea nam, sed scripta graecis ad. Nisl vero cum ea.
-                      Per quod patrioque in. Nihil noluisse sapientem cum in, fugit malorum pro ei. Dictas senserit concludaturque ne eos, vidisse menandri conclusionemque sed in.
-                      Ei sanctus saperet splendide vis. Id eruditi assueverit sed. Vis similique vulputate ex, unum labitur ei his.
+                          Sophie Sula Staging recognizes the importance of first impressions and the welcoming atmosphere you must create to make your home highly desirable for potential buyers.
+                          Our goal is to get your home sold within shortest amount of time.
+                          Buying and selling home can be a very stressful and emotional transition ,which is exactly why we are committed to walk with you through the process.
+                          From staging multi million dollar homes to cozy condos, our range of styles can suite any type of home or budget.
+                          You will benefit greatly from our staging, as it will empower you to sell your house as quickly as possible!
                     </p></div>`;
 
 const stylingProcess = `<div class="mainLogoCont"><p class="textP" tabIndex="0">
-                          STYLING PROCESS TEXT PLACEHOLDER
-                          Lorem ipsum dolor sit amet, per et prima tantas omittantur, ne ipsum dicta mel. Unum vivendo ea nam, sed scripta graecis ad. Nisl vero cum ea.
-                          Per quod patrioque in. Nihil noluisse sapientem cum in, fugit malorum pro ei. Dictas senserit concludaturque ne eos, vidisse menandri conclusionemque sed in.
-                          Ei sanctus saperet splendide vis. Id eruditi assueverit sed. Vis similique vulputate ex, unum labitur ei his.
+                              We take careful measurements and photos of each room.
+                              We evaluate what furniture and accessories are needed to fit the style of the home and the profile of the target buyer.
+                              We manage the furniture delivery and properly place the furniture, accessories and artwork.
+                              We pack up everything, supervising the removal of the furniture and accessories when the property is sold.
+                              Every project with us includes a free consultation.
+                              Have a project coming up?
+                              We’d love for you to see the difference for yourself.
                         </p></div>`;
 
 const contact = `<div class="mainContactCont">
-                      <span class="contactTxt" tabIndex="0">PHONE: +1 310-854-9888</span>
+                      <p class="textP" tabIndex="0">
+                        Send us a few details about your upcoming project and we’ll return your email within 24 hours.
+                      </p>
                       <span class="contactTxt" tabIndex="0">myBusiness@email.com</span>
-                      <form className="quickMailForm" action="/GSmailer.php" method="post">
-                        <input type="hidden" name="initializer" value="Sent_From_Quick_Contact_Button"/>
-                        <label className="quickMailInputLabel">Full Name: </label>
-                        <input required className="quickMailInputTxt" type="text" name="full_name" aria-label="full name"></input>
-                        <label className="quickMailInputLabel">Address: </label>
-                        <input required className="quickMailInputTxt" type="text" name="adress" aria-label="adress"></input>
-                        <label className="quickMailInputLabel">E-Mail: </label>
-                        <input required className="quickMailInputTxt" type="email" name="email"></input>
-                        <label className="quickMailInputLabel">Message: </label>
-                        <textarea rows="9" className="quickMailInputTxt" name="your_message" aria-label="your message"></textarea>
-                        <input className="quickFormSubmitBtn" type="submit" name="submit" value="Submit"/>
-                      </form>
+                      <p class="textP" tabIndex="0">
+                        For immediate assistance, please call.
+                      </p>
+                      <span class="contactTxt" tabIndex="0">+1 818-441-2904</span>
                  </div>`;
 
 window.onload = function () {
@@ -63,7 +60,7 @@ function clickedElem(elemName) {
   setTimeout(function(){
     buttonsToggle();
     elemName === "HOME" ? mainTemplate.innerHTML = homePage : elemName === "ABOUT" ? mainTemplate.innerHTML = about : elemName === "OUR MISSION" ? mainTemplate.innerHTML = ourMission :
-    elemName === "STYLING PROCESS" ? mainTemplate.innerHTML = stylingProcess : elemName === "CONTACT" ? mainTemplate.innerHTML = contact : mainTemplate.innerHTML = homePage;
+    elemName === "STYLING PROCESS" ? mainTemplate.innerHTML = stylingProcess : elemName === "REQUEST CONSULTATION" ? mainTemplate.innerHTML = contact : mainTemplate.innerHTML = homePage;
     appear(mainTemplate, 0, 1, 9);
   }, 900);
 }

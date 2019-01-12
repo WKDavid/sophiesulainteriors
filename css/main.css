@@ -90,11 +90,10 @@
   margin-top: 7%;
   margin-left: 24%;
   font-family: 'Charm';
-  font-size: calc(12px + (21 - 12) * ((100vw - 300px) / (1600 - 300)));
+  font-size: calc(12px + (24 - 12) * ((100vw - 300px) / (1600 - 300)));
 }
 
 .contactTxt {
-  margin: 5%;
   font-family: 'Lobster';
   font-size: calc(14px + (27 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
