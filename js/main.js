@@ -111,7 +111,7 @@ function sizeSetup() {
     if (window.innerHeight < minHeight) {
       // Logo positioning
       if (mainLogo) {
-        mainLogo.style.width = `65vh`;
+        mainLogo.style.width = `55vh`;
       }
       // Text paragraphs positioning
       if (textParagraphs) {
@@ -119,7 +119,7 @@ function sizeSetup() {
           textParagraphs[d].style.marginTop = "1%";
           textParagraphs[d].style.marginLeft = "1%";
           textParagraphs[d].style.width = "97%";
-          textParagraphs[d].style.height = "55vh";
+          textParagraphs[d].style.height = "44vh";
         }
       }
       if (textPConct) {
@@ -134,7 +134,7 @@ function sizeSetup() {
       sMediaC.style.margin = "1%";
       //Gallery container positioning
       if (imgGalleryCont) {
-        imgGalleryCont.style.height = "49vh";
+        imgGalleryCont.style.height = "45vh";
       }
     }
   }
@@ -255,7 +255,7 @@ function pictureSizer() {
     } else if (window.innerHeight < heightSixHundred) {
 
       for (var d = 0; d < galleryFullImgC.length; d++) {
-        galleryFullImgC[d].clientWidth > galleryFullImgC[d].clientHeight ? galleryFullImgC[d].style.width = "67%" : galleryFullImgC[d].style.width = "30%";
+        galleryFullImgC[d].clientWidth > galleryFullImgC[d].clientHeight ? galleryFullImgC[d].style.width = "55%" : galleryFullImgC[d].style.width = "24%";
       }
     }
   }
