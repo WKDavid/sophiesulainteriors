@@ -6,10 +6,16 @@
     box-sizing: border-box;
 }
 
+*:focus {
+  outline: none !important;
+  border: 1px solid rgb(0, 0, 0);
+  box-shadow: 0 0 10px #719ECE;
+}
+
 .main-page {
   font-family: 'Dancing Script';
   background: url('../img/interiors/Back01.jpg');
-  background-size: cover;
+  background-size: 740px 360px;
   background-repeat: no-repeat;
 }
 
@@ -22,21 +28,19 @@
   height: 100%;
 }
 
-.top-part, .sMediaDrop {
+.top-part, .sMediaDrop, .galleriesBtnsCont {
   width: 100%;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+}
+
+.top-part, .sMediaDrop {
   justify-content: center;
 }
 
 .header-button, .sMediaCont {
-  margin: 3%;
-  font-size: calc(14px + (22 - 14) * ((100vw - 300px) / (1600 - 300)));
-}
-
-.header-button, .header-social {
-  cursor: pointer;
+  margin: 2%;
 }
 
 .sMediaDrop {
@@ -52,7 +56,7 @@
   transition: width 1.5s, height 1.5s;
 }
 
-.sMediaCont:hover .sMediaDrop {
+.sMediaCont:hover .sMediaDrop, .sMediaCont:focus .sMediaDrop, .sMediaCont:focus-within .sMediaDrop {
   height: 30vw;
   width: 40vw;
 }
@@ -68,6 +72,8 @@
 }
 
 .sofImg {
+  margin: 1.5%;
+  border-radius: 5px;
   width: 100%;
 }
 
@@ -76,24 +82,183 @@
   text-align: center;
 }
 
-.mainContactCont {
+.mainContactCont, .footer-part {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
 }
 
-.mainLogoImg, .textP {
+.gallTxt, .footer-part, .flowersIMG, .interiorsIMG {
+  text-align: center;
+  width: 100%;
+}
+
+.footer-part {
+  position: fixed;
+  bottom: 3%;
+  left: 0;
+}
+
+.signature {
+  margin-top: 2.3%;
+}
+
+.header-button, .sMediaCont {
+  font-size: calc(14px + (22 - 14) * ((100vw - 300px) / (1600 - 300)));
+}
+
+.gallTxt {
+  font-weight: bolder;
+  font-size: calc(17px + (27 - 17) * ((100vw - 300px) / (1600 - 300)));
+  letter-spacing: 0.3em;
+}
+
+.header-button, .header-social, .galleriesBtn, .signature {
+  cursor: pointer;
+}
+
+.signature {
+  font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+}
+
+.galleriesBtn {
+  background-color: rgba(0, 0, 0, 0.88);
+  font-size: calc(17px + (27 - 17) * ((100vw - 300px) / (1600 - 300)));
+  color: rgb(252, 252, 252);
+  border-radius: 5px;
+  margin-left: 30%;
+  transition: all 0.3s ease;
+}
+
+.galleriesBtn:hover, .galleriesBtn:focus {
+  background-color: rgba(255, 255, 255, 0);
+  color: rgb(0, 0, 0);
+}
+
+.galleryCont {
+  width: 80%;
+  margin-left: 10%;
+  height: 67vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow-y: scroll;
+}
+
+.galleryImgCont {
+  cursor: pointer;
+}
+
+.textP {
   width: 53%;
+}
+
+.mainLogoImg {
+  width: 37vw;
 }
 
 .textP {
   margin-top: 7%;
   margin-left: 24%;
   font-family: 'Charm';
-  font-size: calc(12px + (24 - 12) * ((100vw - 300px) / (1600 - 300)));
+  font-size: calc(15px + (25 - 15) * ((100vw - 300px) / (1600 - 300)));
 }
 
 .contactTxt {
   font-family: 'Lobster';
   font-size: calc(14px + (27 - 14) * ((100vw - 300px) / (1600 - 300)));
+  cursor: pointer;
+}
+
+.modalContainer {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.83);
+    align-items: center;
+    justify-content: center;
+}
+
+.closeModalButton {
+    line-height: 0.3;
+    position: fixed;
+    align-self: flex-end;
+    color: #f1f1f1;
+    font-size: calc(35px + (75 - 35) * ((100vw - 300px) / (1600 - 300)));
+    font-weight: bolder;
+}
+
+.closeModalButton:hover,
+.closeModalButton:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
+.nextImgModalButton, .prevImgModalButton {
+  position: absolute;
+  top: 45%;
+  color: #595959;
+  transition: all 0.7s ease;
+  font-size: calc(45px + (90 - 45) * ((100vw - 300px) / (1600 - 300)));
+  cursor: pointer;
+}
+
+.nextImgModalButton {
+  right: 10%;
+}
+
+.prevImgModalButton {
+  left: 10%;
+}
+
+.nextImgModalButton:hover,
+.nextImgModalButton:focus,
+.prevImgModalButton:hover,
+.prevImgModalButton:focus {
+  color: #ffffff;
+}
+
+.modalPictureCont {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    -webkit-animation-name: enlarge;
+    -webkit-animation-duration: 0.6s;
+    animation-duration: 0.7s;
+    animation-name: enlarge;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modalPicture {
+    width: 100%;
+}
+
+@keyframes enlarge {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+@media screen and (max-width: 500px) {
+  .galleriesBtn {
+    margin-left: 21%;
+    margin-top: 7%;
+    margin-bottom: 3%;
+  }
+  .nextImgModalButton {
+    right: 3%;
+  }
+  .prevImgModalButton {
+    left: 3%;
+  }
+}
+
+@media screen and (max-width: 500px) and (max-height: 900px) {
+  .sMediaCont:hover .sMediaDrop, .sMediaCont:focus .sMediaDrop, .sMediaCont:focus-within .sMediaDrop {
+    height: 43vw;
+    width: 59vw;
+  }
 }

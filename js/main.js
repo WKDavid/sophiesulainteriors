@@ -1,4 +1,7 @@
-const mainTemplate  = document.getElementsByClassName("center-template")[0];
+const mainTemplate = document.getElementsByClassName("center-template")[0];
+const modalCont  = document.getElementsByClassName("modalContainer")[0];
+const emialAddress = "sophie.sula.interiors@gmail.com";
+const phoneNr = "+18184412904";
 
 const homePage = `<div class="mainLogoCont"><img class="mainLogoImg" src="img/socialrest/SLogoBLK.png" alt="logo"/></div>`;
 
@@ -30,27 +33,141 @@ const contact = `<div class="mainContactCont">
                       <p class="textP" tabIndex="0">
                         Send us a few details about your upcoming project and we’ll return your email within 24 hours.
                       </p>
-                      <span class="contactTxt" tabIndex="0">myBusiness@email.com</span>
+                      <span class="contactTxt" tabIndex="0" role="link" onclick="linkOpener('mailto:${emialAddress}')"
+                          onkeydown="keyValidate(event, 'mailto:${emialAddress}', false)">${emialAddress}</span>
                       <p class="textP" tabIndex="0">
                         For immediate assistance, please call.
                       </p>
-                      <span class="contactTxt" tabIndex="0">+1 818-441-2904</span>
+                      <span class="contactTxt" tabIndex="0" role="link" onclick="linkOpener('tel:${phoneNr}')"
+                          onkeydown="keyValidate(event, 'tel:${phoneNr}', false)">+1 818-441-2904</span>
                  </div>`;
+
+let flowersImgList = [];
+let interiorsImgList = [];
+let eventKeyDisable = true;
+let flowersAmount = 15;
+let interiorsAmount = 14;
+
+function arrayPopulator(toPopulate, name, amount) {
+  for (let i = 0; i < amount; i++) {
+    preloadImage(`img/${name}s/${name}${i}.jpg`, name, toPopulate);
+  }
+}
+
+function preloadImage(url, name, toPopulate) {
+    var img = new Image();
+    img.src = url;
+    img.className = `${name}sIMG`;
+    img.alt = `${name}`;
+    toPopulate.push(img);
+}
+
+function sizeSetup() {
+  let backgroundContainer = document.getElementsByClassName("main-page")[0];
+  let mainLogo = document.getElementsByClassName("mainLogoImg")[0];
+  let headerBtn = document.getElementsByClassName("header-button");
+  let sMediaC = document.getElementsByClassName("sMediaCont")[0];
+  let textParagraphs = document.getElementsByClassName("textP");
+  let imgGalleryCont = document.getElementsByClassName("galleryCont")[0];
+  let minHeight = 700;
+
+  if (window.innerHeight > window.innerWidth) {
+    //Background positioning
+    backgroundContainer.style.background = "url(img/interiors/Back01Top.jpg)";
+    backgroundContainer.style.backgroundSize = `${window.innerWidth}px ${window.innerHeight}px`;
+    // Logo positioning
+    if (mainLogo) {
+      mainLogo.style.width = `37vh`;
+    }
+    //Header buttons positioning
+    for (var a = 0; a < headerBtn.length; a++) {
+      headerBtn[a].style.margin = "3%";
+    }
+    sMediaC.style.margin = "3%";
+    // Text paragraphs positioning
+    if (textParagraphs) {
+      for (var d = 0; d < textParagraphs.length; d++) {
+        textParagraphs[d].style.marginTop = "3%";
+        textParagraphs[d].style.marginLeft = "15%";
+        textParagraphs[d].style.width = "70%";
+      }
+    }
+    //Gallery container position
+    if (imgGalleryCont) {
+      imgGalleryCont.style.height = "63vh";
+    }
+
+  } else if (window.innerWidth > window.innerHeight) {
+    //Background positioning
+    backgroundContainer.style.background = "url(img/interiors/Back01.jpg)";
+    backgroundContainer.style.backgroundSize = `${window.innerWidth}px ${window.innerHeight}px`;
+    // Logo positioning
+    if (mainLogo) {
+      mainLogo.style.width = `37vw`;
+    }
+    //Gallery container position return to default
+    if (imgGalleryCont) {
+      imgGalleryCont.style.height = "67vh";
+    }
+    if (window.innerHeight < minHeight) {
+      // Logo positioning
+      if (mainLogo) {
+        mainLogo.style.width = `70vh`;
+      }
+      // Text paragraphs positioning
+      if (textParagraphs) {
+        for (var d = 0; d < textParagraphs.length; d++) {
+          textParagraphs[d].style.marginTop = "1%";
+          textParagraphs[d].style.marginLeft = "1%";
+          textParagraphs[d].style.width = "97%";
+        }
+      }
+      //Header buttons positioning
+      for (var a = 0; a < headerBtn.length; a++) {
+        headerBtn[a].style.margin = "1%";
+      }
+      sMediaC.style.margin = "1%";
+      //Gallery container positioning
+      if (imgGalleryCont) {
+        imgGalleryCont.style.height = "57vh";
+      }
+    }
+  }
+}
+
+(function () {
+  arrayPopulator(flowersImgList, "flower", flowersAmount);
+  arrayPopulator(interiorsImgList, "interior", interiorsAmount);
+}());
 
 window.onload = function () {
   buttonsToggle();
   appear(mainTemplate, 0, 1, 9);
   mainTemplate.innerHTML = homePage;
+  sizeSetup();
+  pictureSizer();
 }
 
 function buttonsToggle() {
-  for (let i = 0; i < document.getElementsByClassName("header-button").length; i++) {
-    document.getElementsByClassName("header-button")[i].style.pointerEvents = "none";
-  }
-  setTimeout(function(){
-    for (let i = 0; i < document.getElementsByClassName("header-button").length; i++) {
-      document.getElementsByClassName("header-button")[i].style.pointerEvents = "initial";
+  function classEventToggle(nameOfClass, enOrDisable) {
+    if (enOrDisable) {
+      for (let i = 0; i < document.getElementsByClassName(`${nameOfClass}`).length; i++) {
+        document.getElementsByClassName(`${nameOfClass}`)[i].style.pointerEvents = "initial";
+      }
+    } else {
+      for (let i = 0; i < document.getElementsByClassName(`${nameOfClass}`).length; i++) {
+        document.getElementsByClassName(`${nameOfClass}`)[i].style.pointerEvents = "none";
+      }
     }
+  }
+  classEventToggle("header-button", false);
+  classEventToggle("galleriesBtn", false);
+  eventKeyDisable = true;
+
+  setTimeout(function() {
+    classEventToggle("header-button", true);
+    classEventToggle("galleriesBtn", true);
+    eventKeyDisable = false;
   }, 900);
 }
 
@@ -60,24 +177,143 @@ function clickedElem(elemName) {
   setTimeout(function(){
     buttonsToggle();
     elemName === "HOME" ? mainTemplate.innerHTML = homePage : elemName === "ABOUT" ? mainTemplate.innerHTML = about : elemName === "OUR MISSION" ? mainTemplate.innerHTML = ourMission :
-    elemName === "STYLING PROCESS" ? mainTemplate.innerHTML = stylingProcess : elemName === "REQUEST CONSULTATION" ? mainTemplate.innerHTML = contact : mainTemplate.innerHTML = homePage;
+    elemName === "STYLING PROCESS" ? mainTemplate.innerHTML = stylingProcess : elemName === "REQUEST CONSULTATION" ? mainTemplate.innerHTML = contact : elemName === "INTERIORS" ?
+    mainTemplate.innerHTML = loadImgGallery(elemName) : elemName === "DECOR" ? mainTemplate.innerHTML = loadImgGallery(elemName) : mainTemplate.innerHTML = homePage;
     appear(mainTemplate, 0, 1, 9);
+    sizeSetup();
+    pictureSizer();
   }, 900);
 }
 
+function loadImgGallery(galleryName) {
+  let toFindImgArray = [ { gName: "INTERIORS", theArray: interiorsImgList }, { gName: "DECOR", theArray: flowersImgList } ];
+  let theImgArray = toFindImgArray.filter(anImgObj => anImgObj.gName === galleryName )[0].theArray;
+  let galleryToRender = theImgArray.map(anImg => { return `<div class="galleryImgCont">
+                                                              <img src="${anImg.src}" class="${anImg.className}" alt="${anImg.alt}" tabIndex="0"
+                                                                onclick="modalOpen(event.target)" onkeydown="keyValidate(event, false, false, true)"/></div>` });
+  return `<div class="galleryCont">${galleryToRender}</div>`;
+}
+
 function linkOpener(link) {
-  let newWindow = window.open();
+  var newWindow = window.open();
   newWindow.opener = null;
   newWindow.location = link;
   newWindow.target = "_blank";
-  newWindow();
+  newWindow;
 }
 
-// mainTemplate.innerHTML = contact;
+function keyValidate(event, link, nav, onModalOpen, onModalClose, onModalNext, onModalPrev) {
+  if (event.keyCode === 13 || event.keyCode === 32) {
+    if (link) {
+      linkOpener(link);
+    } else if (nav && !eventKeyDisable) {
+      clickedElem(event.target.innerText);
+    } else if (onModalOpen) {
+      modalOpen(event.target);
+    } else if (onModalClose) {
+      closeModal();
+    } else if (onModalNext) {
+      changeImg(true, false);
+    } else if (onModalPrev) {
+      changeImg(false, true);
+    } else {
+      return;
+    }
+  }
+}
 
-// appear(mainTemplate, 0, 1, 30);
+window.addEventListener('resize', function(ev){ pictureSizer(); }, true);
 
-// appear(mainTemplate, 100, -1, 30);
+function pictureSizer() {
+  let galleryThumbImgC = document.getElementsByClassName("galleryImgCont");
+  let galleryFullImgC = document.getElementsByClassName("modalPictureCont");
+  let widthThousand = 1000;
+  let heightSixHundred = 600;
+  if (window.innerWidth > widthThousand) {
+    
+    for (var d = 0; d < galleryThumbImgC.length; d++) {
+      galleryThumbImgC[d].clientWidth > galleryThumbImgC[d].clientHeight ? galleryThumbImgC[d].style.width = "33%" : galleryThumbImgC[d].style.width = "17%";
+    }
+    for (var d = 0; d < galleryFullImgC.length; d++) {
+      galleryFullImgC[d].clientWidth > galleryFullImgC[d].clientHeight ? galleryFullImgC[d].style.width = "71%" : galleryFullImgC[d].style.width = "33%";
+    }
+  } else if (window.innerWidth < widthThousand) {
+
+    for (var d = 0; d < galleryThumbImgC.length; d++) {
+      galleryThumbImgC[d].clientWidth > galleryThumbImgC[d].clientHeight ? galleryThumbImgC[d].style.width = "38%" : galleryThumbImgC[d].style.width = "27%";
+    }
+    if (window.innerHeight > heightSixHundred) {
+
+      for (var d = 0; d < galleryFullImgC.length; d++) {
+        galleryFullImgC[d].clientWidth > galleryFullImgC[d].clientHeight ? galleryFullImgC[d].style.width = "77%" : galleryFullImgC[d].style.width = "75%";
+      }
+    } else if (window.innerHeight < heightSixHundred) {
+
+      for (var d = 0; d < galleryFullImgC.length; d++) {
+        galleryFullImgC[d].clientWidth > galleryFullImgC[d].clientHeight ? galleryFullImgC[d].style.width = "67%" : galleryFullImgC[d].style.width = "30%";
+      }
+    }
+  }
+}
+
+function modalOpen(eventTarget) {
+  modalCont.innerHTML = `<span class="nextImgModalButton" onclick="changeImg(true, false)" tabIndex="0" role="button" aria-label="next"
+                                onkeydown="keyValidate(event, false, false, false, false, true, false)">&#10095;</span>
+                         <span class="prevImgModalButton" onclick="changeImg(false, true)" tabIndex="0" role="button" aria-label="previous"
+                                onkeydown="keyValidate(event, false, false, false, false, false, true)">&#10094;</span>
+                         <div class="modalPictureCont">
+                           <span class="closeModalButton" tabIndex="0" role="button" aria-label="close" onclick="closeModal()"
+                                onkeydown="keyValidate(event, false, false, false, true)">&times;</span>
+                           <img class="modalPicture"  src="${eventTarget.src}" onkeydown="keyValidate(event, false, false, false, true)"
+                              alt="${eventTarget.alt}" tabIndex="0" onclick="closeModal()"/>
+                         </div>`;
+  modalCont.style.display = "flex";
+  pictureSizer();
+  modalFocus("-1");
+}
+
+function closeModal() {
+  modalFocus("0");
+  modalCont.style.display = "none";
+}
+
+function modalFocus(onOff) {
+  let toDis = document.querySelectorAll(".header-button, .sMediaCont, .socImg, .galleriesBtnsCont, .galleriesBtn, .signature, .mainLogoCont, .textP, .contactTxt, .flowersIMG, .interiorsIMG, .top-part");
+  for (var n = 0; n < toDis.length; n++) {
+    toDis[n].setAttribute("tabIndex", `${onOff}`);
+  }
+}
+
+function currentImgArrayCheck(modalImg) {
+  if (modalImg.alt === "flower") {
+    return flowersImgList;
+  } else if (modalImg.alt === "interior") {
+    return interiorsImgList;
+  }
+}
+
+function changeImg(next, previous) {
+  let modalImg = document.getElementsByClassName("modalPicture")[0];
+  let modalImgCont = document.getElementsByClassName("modalPictureCont")[0];
+  let currentImgArray = currentImgArrayCheck(modalImg);
+  if (next) {
+    for (let aSingleImg of currentImgArray) {
+      if (aSingleImg.src === modalImg.src) {
+        currentImgArray.indexOf(aSingleImg) + 1 >= currentImgArray.length ? modalImg.src = currentImgArray[0].src : modalImg.src = currentImgArray[currentImgArray.indexOf(aSingleImg) + 1].src;
+        pictureSizer();
+        return;
+      }
+    }
+  } else if (previous) {
+    for (let aSingleImg of currentImgArray) {
+      if (aSingleImg.src === modalImg.src) {
+        currentImgArray.indexOf(aSingleImg) - 1 < 0 ? modalImg.src = currentImgArray[currentImgArray.length-1].src : modalImg.src = currentImgArray[currentImgArray.indexOf(aSingleImg) - 1].src;
+        pictureSizer();
+        return;
+      }
+    }
+  }
+}
 
 function appear(theElement, initOpacity, step, speed){
     var t_o;

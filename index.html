@@ -15,29 +15,43 @@
   <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 </head>
 
-<body class="main-page">
+<body class="main-page" onresize="sizeSetup()">
+  <div class="modalContainer" style="display:none" aria-modal="true" role="dialog" aria-label="enlarged version">
+  </div>
   <div class="bgLayer">
-    <header class="top-part">
-      <span class="header-button" onclick="clickedElem(event.target.innerText)" tabIndex="0">HOME</span>
-      <span class="header-button" onclick="clickedElem(event.target.innerText)" tabIndex="0">ABOUT</span>
-      <span class="header-button" onclick="clickedElem(event.target.innerText)" tabIndex="0">OUR MISSION</span>
-      <span class="header-button" onclick="clickedElem(event.target.innerText)" tabIndex="0">STYLING PROCESS</span>
-      <span class="header-button" onclick="clickedElem(event.target.innerText)" tabIndex="0">REQUEST CONSULTATION</span>
-      <div class="sMediaCont">
-        <span class="header-social" tabIndex="0">SOCIAL MEDIA</span>
+    <header class="top-part" tabIndex="0" role="navigation" aria-label="Main navigation">
+      <span class="header-button" onclick="clickedElem(event.target.innerText)" onkeydown="keyValidate(event, false, true)" tabIndex="0">HOME</span>
+      <span class="header-button" onclick="clickedElem(event.target.innerText)" onkeydown="keyValidate(event, false, true)" tabIndex="0">ABOUT</span>
+      <span class="header-button" onclick="clickedElem(event.target.innerText)" onkeydown="keyValidate(event, false, true)" tabIndex="0">OUR MISSION</span>
+      <span class="header-button" onclick="clickedElem(event.target.innerText)" onkeydown="keyValidate(event, false, true)" tabIndex="0">STYLING PROCESS</span>
+      <span class="header-button" onclick="clickedElem(event.target.innerText)" onkeydown="keyValidate(event, false, true)" tabIndex="0">REQUEST CONSULTATION</span>
+      <div class="sMediaCont" tabIndex="0">
+        <span class="header-social">SOCIAL MEDIA</span>
         <div class="sMediaDrop">
           <div class="sofImgCont">
             <img class="sofImg" src="img/socialrest/IMG_9945.jpg" alt="designer"/>
           </div>
           <div class="socialLogosCont">
-            <img class="socImg" src="img/socialrest/fbLogo.png" alt="facebook" onclick="linkOpener('https://www.facebook.com/Sophie-Sulashvili-549665075473360/')" tabIndex="0"/>
-            <img class="socImg" src="img/socialrest/instLogo.png" alt="instagram" onclick="linkOpener('https://www.instagram.com/sophiestylesessions/')" tabIndex="0"/>
+            <img class="socImg" src="img/socialrest/fbLogo.png" alt="facebook" onclick="linkOpener('https://www.facebook.com/Sophie-Sulashvili-549665075473360/')" tabIndex="0" role="link"
+              onkeydown="keyValidate(event, 'https://www.facebook.com/Sophie-Sulashvili-549665075473360/', false)" alt="facebook logo"/>
+            <img class="socImg" src="img/socialrest/instLogo.png" alt="instagram" onclick="linkOpener('https://www.instagram.com/sophiestylesessions/')" tabIndex="0" role="link"
+              onkeydown="keyValidate(event, 'https://www.instagram.com/sophiestylesessions/', false)" alt="instagram logo"/>
           </div>
         </div>
       </div>
     </header>
 
     <div class="center-template"></div>
+
+    <footer class="footer-part">
+        <span class="gallTxt">GALLERIES:</span>
+        <div class="galleriesBtnsCont" role="navigation" aria-label="galleries navigation" tabIndex="0">
+          <span class="galleriesBtn" tabIndex="0" onclick="clickedElem(event.target.innerText)" onkeydown="keyValidate(event, false, true)">INTERIORS</span>
+          <span class="galleriesBtn" tabIndex="0" onclick="clickedElem(event.target.innerText)" onkeydown="keyValidate(event, false, true)">DECOR</span>
+        </div>
+        <span class="signature" onclick="linkOpener('https://davidyurkin.com/')" tabIndex="0" role="link"
+          onkeydown="keyValidate(event, 'https://davidyurkin.com/', false)">Sophie Sula © 2019 Proudly developed by David Yurkin</span>
+    </footer>
 
   </div>
   <script src="js/main.js"></script>
