@@ -30,16 +30,14 @@ const stylingProcess = `<div class="mainLogoCont"><p class="textP" tabIndex="0">
                         </p></div>`;
 
 const contact = `<div class="mainContactCont">
-                      <p class="textP" tabIndex="0">
+                      <p class="textPContact" tabIndex="0">
                         Send us a few details about your upcoming project and we’ll return your email within 24 hours.
                       </p>
-                      <span class="contactTxt" tabIndex="0" role="link" onclick="linkOpener('mailto:${emialAddress}')"
-                          onkeydown="keyValidate(event, 'mailto:${emialAddress}', false)">${emialAddress}</span>
-                      <p class="textP" tabIndex="0">
+                      <a class="contactTxt" tabIndex="0" href='mailto:${emialAddress}' target="_blank" rel="noopener noreferrer">${emialAddress}</a>
+                      <p class="textPContact" tabIndex="0">
                         For immediate assistance, please call.
                       </p>
-                      <span class="contactTxt" tabIndex="0" role="link" onclick="linkOpener('tel:${phoneNr}')"
-                          onkeydown="keyValidate(event, 'tel:${phoneNr}', false)">+1 818-441-2904</span>
+                      <a class="contactTxt" tabIndex="0" href='tel:${phoneNr}' target="_blank" rel="noopener noreferrer">+1 818-441-2904</a>
                  </div>`;
 
 let flowersImgList = [];
@@ -68,6 +66,7 @@ function sizeSetup() {
   let headerBtn = document.getElementsByClassName("header-button");
   let sMediaC = document.getElementsByClassName("sMediaCont")[0];
   let textParagraphs = document.getElementsByClassName("textP");
+  let textPConct = document.getElementsByClassName("textPContact");
   let imgGalleryCont = document.getElementsByClassName("galleryCont")[0];
   let minHeight = 700;
 
@@ -94,7 +93,7 @@ function sizeSetup() {
     }
     //Gallery container position
     if (imgGalleryCont) {
-      imgGalleryCont.style.height = "63vh";
+      imgGalleryCont.style.height = "57vh";
     }
 
   } else if (window.innerWidth > window.innerHeight) {
@@ -112,7 +111,7 @@ function sizeSetup() {
     if (window.innerHeight < minHeight) {
       // Logo positioning
       if (mainLogo) {
-        mainLogo.style.width = `70vh`;
+        mainLogo.style.width = `65vh`;
       }
       // Text paragraphs positioning
       if (textParagraphs) {
@@ -120,6 +119,12 @@ function sizeSetup() {
           textParagraphs[d].style.marginTop = "1%";
           textParagraphs[d].style.marginLeft = "1%";
           textParagraphs[d].style.width = "97%";
+          textParagraphs[d].style.height = "55vh";
+        }
+      }
+      if (textPConct) {
+        for (var d = 0; d < textPConct.length; d++) {
+          textPConct[d].style.margin = "0.5%";
         }
       }
       //Header buttons positioning
@@ -129,7 +134,7 @@ function sizeSetup() {
       sMediaC.style.margin = "1%";
       //Gallery container positioning
       if (imgGalleryCont) {
-        imgGalleryCont.style.height = "57vh";
+        imgGalleryCont.style.height = "49vh";
       }
     }
   }
@@ -230,7 +235,7 @@ function pictureSizer() {
   let widthThousand = 1000;
   let heightSixHundred = 600;
   if (window.innerWidth > widthThousand) {
-    
+
     for (var d = 0; d < galleryThumbImgC.length; d++) {
       galleryThumbImgC[d].clientWidth > galleryThumbImgC[d].clientHeight ? galleryThumbImgC[d].style.width = "33%" : galleryThumbImgC[d].style.width = "17%";
     }
