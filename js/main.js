@@ -44,7 +44,7 @@ let flowersImgList = [];
 let interiorsImgList = [];
 let eventKeyDisable = true;
 let flowersAmount = 15;
-let interiorsAmount = 14;
+let interiorsAmount = 41;
 
 function arrayPopulator(toPopulate, name, amount) {
   for (let i = 0; i < amount; i++) {
@@ -76,7 +76,7 @@ function sizeSetup() {
     backgroundContainer.style.backgroundSize = `${window.innerWidth}px ${window.innerHeight}px`;
     // Logo positioning
     if (mainLogo) {
-      mainLogo.style.width = `37vh`;
+      mainLogo.style.width = `41vh`;
     }
     //Header buttons positioning
     for (var a = 0; a < headerBtn.length; a++) {
@@ -102,7 +102,7 @@ function sizeSetup() {
     backgroundContainer.style.backgroundSize = `${window.innerWidth}px ${window.innerHeight}px`;
     // Logo positioning
     if (mainLogo) {
-      mainLogo.style.width = `37vw`;
+      mainLogo.style.width = `41vw`;
     }
     //Gallery container position return to default
     if (imgGalleryCont) {
@@ -262,6 +262,8 @@ function pictureSizer() {
 }
 
 function modalOpen(eventTarget) {
+  document.addEventListener('touchstart', handleTouchStart, false);
+  document.addEventListener('touchmove', handleTouchMove, false);
   modalCont.innerHTML = `<span class="nextImgModalButton" onclick="changeImg(true, false)" tabIndex="0" role="button" aria-label="next"
                                 onkeydown="keyValidate(event, false, false, false, false, true, false)">&#10095;</span>
                          <span class="prevImgModalButton" onclick="changeImg(false, true)" tabIndex="0" role="button" aria-label="previous"
@@ -280,6 +282,8 @@ function modalOpen(eventTarget) {
 function closeModal() {
   modalFocus("0");
   modalCont.style.display = "none";
+  document.removeEventListener('touchstart', handleTouchStart);
+  document.removeEventListener('touchmove', handleTouchMove);
 }
 
 function modalFocus(onOff) {
@@ -347,9 +351,8 @@ function appear(theElement, initOpacity, step, speed){
 }
 
 //swipe detection
+//adding event listeners at line 265 and removing at line 285
 
-document.addEventListener('touchstart', handleTouchStart, false);
-document.addEventListener('touchmove', handleTouchMove, false);
 
 var xDown = null;
 var yDown = null;
