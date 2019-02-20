@@ -295,6 +295,9 @@
   .textPContact {
     margin: 0;
   }
+  .header-button, .sMediaCont {
+    margin: 0.7%;
+  }
 }
 
 @media screen and (max-width: 500px) and (max-height: 900px) {
