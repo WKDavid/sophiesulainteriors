@@ -33,6 +33,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .top-part, .sMediaDrop {
@@ -80,6 +81,7 @@
 
 .mainLogoCont, .mainContactCont {
   width: 100%;
+  height: 100%;
   text-align: center;
 }
 
@@ -96,8 +98,17 @@
 
 .footer-part {
   position: fixed;
-  bottom: 3%;
+  bottom: 0;
   left: 0;
+}
+
+.top-part, .footer-part {
+  height: 14%;
+}
+
+.center-template {
+  width: 100%;
+  height: 70%;
 }
 
 .signature {
@@ -105,6 +116,7 @@
 }
 
 .header-button, .sMediaCont {
+  height: auto;
   font-size: calc(14px + (22 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 
@@ -139,7 +151,7 @@
 .galleryCont {
   width: 80%;
   margin-left: 10%;
-  height: 67vh;
+  height: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -153,10 +165,7 @@
 
 .textP {
   width: 53%;
-}
-
-.mainLogoImg {
-  width: 37vw;
+  height: 100%;
 }
 
 .textP, .textPContact {
@@ -262,6 +271,29 @@
   }
   .prevImgModalButton {
     left: 3%;
+  }
+}
+
+@media screen and (max-width: 500px), screen and (max-height: 570px) {
+  .textP {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+}
+
+@media screen and (max-height: 570px) {
+  .top-part, .footer-part {
+    height: 24%;
+  }
+  .center-template {
+    height: 50%;
+  }
+}
+
+@media screen and (max-height: 400px) {
+  .textPContact {
+    margin: 0;
   }
 }
 

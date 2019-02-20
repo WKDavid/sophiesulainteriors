@@ -63,80 +63,82 @@ function preloadImage(url, name, toPopulate) {
 function sizeSetup() {
   let backgroundContainer = document.getElementsByClassName("main-page")[0];
   let mainLogo = document.getElementsByClassName("mainLogoImg")[0];
-  let headerBtn = document.getElementsByClassName("header-button");
-  let sMediaC = document.getElementsByClassName("sMediaCont")[0];
-  let textParagraphs = document.getElementsByClassName("textP");
-  let textPConct = document.getElementsByClassName("textPContact");
-  let imgGalleryCont = document.getElementsByClassName("galleryCont")[0];
-  let minHeight = 700;
+  // let headerBtn = document.getElementsByClassName("header-button");
+  // let sMediaC = document.getElementsByClassName("sMediaCont")[0];
+  // let textParagraphs = document.getElementsByClassName("textP");
+  // let textPConct = document.getElementsByClassName("textPContact");
+  // let imgGalleryCont = document.getElementsByClassName("galleryCont")[0];
+  // let minHeight = 700;
 
   if (window.innerHeight > window.innerWidth) {
     //Background positioning
     backgroundContainer.style.background = "url(img/interiors/Back01Top.jpg)";
     backgroundContainer.style.backgroundSize = `${window.innerWidth}px ${window.innerHeight}px`;
     // Logo positioning
-    if (mainLogo) {
-      mainLogo.style.width = `41vh`;
-    }
-    //Header buttons positioning
-    for (var a = 0; a < headerBtn.length; a++) {
-      headerBtn[a].style.margin = "3%";
-    }
-    sMediaC.style.margin = "3%";
-    // Text paragraphs positioning
-    if (textParagraphs) {
-      for (var d = 0; d < textParagraphs.length; d++) {
-        textParagraphs[d].style.marginTop = "3%";
-        textParagraphs[d].style.marginLeft = "15%";
-        textParagraphs[d].style.width = "70%";
+      if (mainLogo) {
+        mainLogo.style.width = `100%`;
+        mainLogo.style.height = `auto`;
       }
-    }
+    //Header buttons positioning
+        // for (var a = 0; a < headerBtn.length; a++) {
+        //   headerBtn[a].style.margin = "3%";
+        // }
+        // sMediaC.style.margin = "3%";
+    // Text paragraphs positioning
+        // if (textParagraphs) {
+        //   for (var d = 0; d < textParagraphs.length; d++) {
+        //     textParagraphs[d].style.marginTop = "3%";
+        //     textParagraphs[d].style.marginLeft = "15%";
+        //     textParagraphs[d].style.width = "70%";
+        //   }
+        // }
     //Gallery container position
-    if (imgGalleryCont) {
-      imgGalleryCont.style.height = "57vh";
-    }
+        // if (imgGalleryCont) {
+        //   imgGalleryCont.style.height = "57vh";
+        // }
 
   } else if (window.innerWidth > window.innerHeight) {
     //Background positioning
     backgroundContainer.style.background = "url(img/interiors/Back01.jpg)";
     backgroundContainer.style.backgroundSize = `${window.innerWidth}px ${window.innerHeight}px`;
     // Logo positioning
-    if (mainLogo) {
-      mainLogo.style.width = `41vw`;
-    }
+        if (mainLogo) {
+          mainLogo.style.width = `auto`;
+          mainLogo.style.height = `100%`;
+        }
     //Gallery container position return to default
-    if (imgGalleryCont) {
-      imgGalleryCont.style.height = "67vh";
-    }
-    if (window.innerHeight < minHeight) {
+        // if (imgGalleryCont) {
+        //   imgGalleryCont.style.height = "67vh";
+        // }
+    // if (window.innerHeight < minHeight) {
       // Logo positioning
-      if (mainLogo) {
-        mainLogo.style.width = `55vh`;
-      }
+          // if (mainLogo) {
+          //   mainLogo.style.width = `55vh`;
+          // }
       // Text paragraphs positioning
-      if (textParagraphs) {
-        for (var d = 0; d < textParagraphs.length; d++) {
-          textParagraphs[d].style.marginTop = "1%";
-          textParagraphs[d].style.marginLeft = "1%";
-          textParagraphs[d].style.width = "97%";
-          textParagraphs[d].style.height = "44vh";
-        }
-      }
-      if (textPConct) {
-        for (var d = 0; d < textPConct.length; d++) {
-          textPConct[d].style.margin = "0.5%";
-        }
-      }
+          // if (textParagraphs) {
+          //   for (var d = 0; d < textParagraphs.length; d++) {
+          //     textParagraphs[d].style.marginTop = "1%";
+          //     textParagraphs[d].style.marginLeft = "1%";
+          //     textParagraphs[d].style.width = "97%";
+          //     textParagraphs[d].style.height = "44vh";
+          //   }
+          // }
+          // if (textPConct) {
+          //   for (var d = 0; d < textPConct.length; d++) {
+          //     textPConct[d].style.margin = "0.5%";
+          //   }
+          // }
       //Header buttons positioning
-      for (var a = 0; a < headerBtn.length; a++) {
-        headerBtn[a].style.margin = "1%";
-      }
-      sMediaC.style.margin = "1%";
+          // for (var a = 0; a < headerBtn.length; a++) {
+          //   headerBtn[a].style.margin = "1%";
+          // }
+          // sMediaC.style.margin = "1%";
       //Gallery container positioning
-      if (imgGalleryCont) {
-        imgGalleryCont.style.height = "45vh";
-      }
-    }
+      // if (imgGalleryCont) {
+      //   imgGalleryCont.style.height = "45vh";
+      // }
+    // }
   }
 }
 
@@ -196,7 +198,7 @@ function loadImgGallery(galleryName) {
   let galleryToRender = theImgArray.map(anImg => { return `<div class="galleryImgCont">
                                                               <img src="${anImg.src}" class="${anImg.className}" alt="${anImg.alt}" tabIndex="0"
                                                                 onclick="modalOpen(event.target)" onkeydown="keyValidate(event, false, false, true)"/></div>` });
-  return `<div class="galleryCont">${galleryToRender}</div>`;
+  return `<div class="galleryCont">${galleryToRender.join("")}</div>`;
 }
 
 function linkOpener(link) {
@@ -233,7 +235,7 @@ function pictureSizer() {
   let galleryThumbImgC = document.getElementsByClassName("galleryImgCont");
   let galleryFullImgC = document.getElementsByClassName("modalPictureCont");
   let widthThousand = 1000;
-  let heightSixHundred = 600;
+  let heightFourHundred = 430;
   if (window.innerWidth > widthThousand) {
 
     for (var d = 0; d < galleryThumbImgC.length; d++) {
@@ -247,15 +249,15 @@ function pictureSizer() {
     for (var d = 0; d < galleryThumbImgC.length; d++) {
       galleryThumbImgC[d].clientWidth > galleryThumbImgC[d].clientHeight ? galleryThumbImgC[d].style.width = "38%" : galleryThumbImgC[d].style.width = "27%";
     }
-    if (window.innerHeight > heightSixHundred) {
+    if (window.innerHeight > heightFourHundred) {
 
       for (var d = 0; d < galleryFullImgC.length; d++) {
         galleryFullImgC[d].clientWidth > galleryFullImgC[d].clientHeight ? galleryFullImgC[d].style.width = "77%" : galleryFullImgC[d].style.width = "75%";
       }
-    } else if (window.innerHeight < heightSixHundred) {
+    } else if (window.innerHeight < heightFourHundred) {
 
       for (var d = 0; d < galleryFullImgC.length; d++) {
-        galleryFullImgC[d].clientWidth > galleryFullImgC[d].clientHeight ? galleryFullImgC[d].style.width = "55%" : galleryFullImgC[d].style.width = "24%";
+        galleryFullImgC[d].clientWidth > galleryFullImgC[d].clientHeight ? galleryFullImgC[d].style.width = "55%" : galleryFullImgC[d].style.width = "35%";
       }
     }
   }
