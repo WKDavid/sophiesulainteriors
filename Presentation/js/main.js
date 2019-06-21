@@ -13,7 +13,6 @@ function displaySLides(onOff) {
   if (onOff === true) {
     if (imgIndex < slidesArray.length) {
       bodyElem.appendChild(slidesArray[imgIndex]);
-      console.log(imgIndex);
       let currentSlideImg = document.getElementsByClassName("currentSlide")[0];
       appear(currentSlideImg, 0, 1, 9);
       imgIndex++;
