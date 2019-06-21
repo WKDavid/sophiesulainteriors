@@ -44,7 +44,7 @@ let flowersImgList = [];
 let interiorsImgList = [];
 let eventKeyDisable = true;
 let flowersAmount = 15;
-let interiorsAmount = 41;
+let interiorsAmount = 59;
 
 function arrayPopulator(toPopulate, name, amount) {
   for (let i = 0; i < amount; i++) {
@@ -148,6 +148,8 @@ function sizeSetup() {
 }());
 
 window.onload = function () {
+  var loadingImg = document.getElementsByClassName("loadingCont")[0];
+  loadingImg.style.display = "none";
   buttonsToggle();
   appear(mainTemplate, 0, 1, 9);
   mainTemplate.innerHTML = homePage;

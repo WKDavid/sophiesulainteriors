@@ -12,6 +12,22 @@
   box-shadow: 0 0 10px #719ECE;
 }
 
+.loading {
+  height: auto;
+  width: auto;
+}
+
+.loadingCont {
+  z-index: 99;
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #040404;
+  display: flex;
+  justify-content: center;
+}
+
 .main-page {
   font-family: 'Dancing Script';
   background: url('../img/interiors/Back01.jpg');
@@ -111,9 +127,9 @@
   height: 70%;
 }
 
-.signature {
+/* .signature {
   margin-top: 1%;
-}
+} */
 
 .header-button, .sMediaCont {
   height: auto;
