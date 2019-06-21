@@ -1,5 +1,5 @@
 const bodyElem = document.getElementsByClassName("mainPresentation")[0];
-const numberofSlides = 12;
+const numberofSlides = 21;
 let slidesArray = [];
 let imgIndex = 0;
 
