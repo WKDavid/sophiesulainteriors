@@ -1,7 +1,12 @@
 const bodyElem = document.getElementsByClassName("mainPresentation")[0];
-const numberofSlides = 21;
+const pauseBtn = document.getElementsByClassName("pauseBtn")[0];
+const numberofSlides = 25;
 let slidesArray = [];
 let imgIndex = 0;
+let pauseState = false;
+let setDissapear;
+let setRemove;
+let currentSlideImg;
 
 window.onload = function() {
   var loadingImg = document.getElementsByClassName("loadingCont")[0];
@@ -9,30 +14,63 @@ window.onload = function() {
   displaySLides(true);
 };
 
+function pausePlay() {
+  pauseState = !pauseState;
+  if (pauseState === true) {
+    clearTimeout(setDissapear);
+    clearTimeout(setRemove);
+    pauseBtn.style.backgroundColor = "#da2e2e";
+    pauseBtn.innerText = "Resume Slideshow";
+  } else if (pauseState === false) {
+    removeCurrentSlide(currentSlideImg);
+    pauseBtn.style.backgroundColor = "green";
+    pauseBtn.innerText = "Pause Slideshow";
+  }
+  displaySLides(true);
+}
+
 function displaySLides(onOff) {
-  if (onOff === true) {
+  if (onOff === true && pauseState === false) {
     if (imgIndex < slidesArray.length) {
       bodyElem.appendChild(slidesArray[imgIndex]);
-      let currentSlideImg = document.getElementsByClassName("currentSlide")[0];
+      currentSlideImg = document.getElementsByClassName("currentSlide")[0];
       appear(currentSlideImg, 0, 1, 9);
       imgIndex++;
 
-      setTimeout(function() {
-        appear(currentSlideImg, 100, -1, 9);
+      setDissapear = setTimeout(function() {
+        disappearCurrentSlide(currentSlideImg)
+      }, 4000);
 
-      }, 7000);
-
-      setTimeout(function() {
-        currentSlideImg.parentNode.removeChild(currentSlideImg);
+      setRemove = setTimeout(function() {
+        removeCurrentSlide(currentSlideImg);
         displaySLides(true);
-      }, 8000);
+      }, 5500);
+
     } else {
       imgIndex = 0;
 
       setTimeout(function() {
         displaySLides(true);
-      }, 8000);
+      }, 5000);
     }
+  } else if (pauseState === true) {
+    return;
+  }
+}
+
+function disappearCurrentSlide(cSlide) {
+  if (cSlide && cSlide.parentNode != null) {
+    appear(cSlide, 100, -1, 9);
+  } else {
+    return;
+  }
+}
+
+function removeCurrentSlide(cSlide) {
+  if (cSlide && cSlide.parentNode != null) {
+    cSlide.parentNode.removeChild(cSlide);
+  } else {
+    return;
   }
 }
 
@@ -48,6 +86,14 @@ function preloadImage(url, name, toPopulate) {
     img.className = `currentSlide`;
     img.alt = `${name}`;
     toPopulate.push(img);
+}
+
+function linkOpener(link) {
+  var newWindow = window.open();
+  newWindow.opener = null;
+  newWindow.location = link;
+  newWindow.target = "_blank";
+  newWindow;
 }
 
 (function () {

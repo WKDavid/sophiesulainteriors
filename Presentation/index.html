@@ -9,18 +9,23 @@
   <meta name="author" content="David Yurkin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sophie Sula Presentation</title>
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body class="mainPresentation">
+  <div class="multimediaControls">
+    <audio autoplay loop controls>
+      <source src="music/GoldfrappUtopia.ogg" type="audio/ogg">
+      <source src="music/GoldfrappUtopia.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button onclick="pausePlay()" class="pauseBtn">Pause Slideshow</button>
+    <span class="mainLink" onclick="linkOpener('https://sophiesulainteriors.com')">Go To Website</span>
+  </div>
   <div class="loadingCont">
     <img class="loading" src="img/loading.svg" alt="loading screen"/>
   </div>
-  <audio autoplay loop controls>
-    <source src="music/GoldfrappUtopia.ogg" type="audio/ogg">
-    <source src="music/GoldfrappUtopia.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
   <script src="js/main.js"></script>
 </body>
 

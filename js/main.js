@@ -3,7 +3,7 @@ const modalCont  = document.getElementsByClassName("modalContainer")[0];
 const emialAddress = "sophie.sula.interiors@gmail.com";
 const phoneNr = "+18184412904";
 
-const homePage = `<div class="mainLogoCont"><img class="mainLogoImg" src="img/socialrest/SLogoBLK.png" alt="logo"/></div>`;
+const homePage = `<div class="mainLogoCont"><img class="mainLogoImg" src="img/socialrest/SLogoBLK.png" alt="logo" onclick="linkOpener('https://sophiesulainteriors.com/Presentation/')"/></div>`;
 
 const about = `<div class="mainLogoCont"><p class="textP" tabIndex="0">
                   Sophie Sula Staging company was established to serve the Los Angeles region and surrounding cities.
@@ -44,7 +44,7 @@ let flowersImgList = [];
 let interiorsImgList = [];
 let eventKeyDisable = true;
 let flowersAmount = 15;
-let interiorsAmount = 59;
+let interiorsAmount = 85;
 
 function arrayPopulator(toPopulate, name, amount) {
   for (let i = 0; i < amount; i++) {
