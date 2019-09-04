@@ -44,7 +44,7 @@ let flowersImgList = [];
 let interiorsImgList = [];
 let eventKeyDisable = true;
 let flowersAmount = 15;
-let interiorsAmount = 85;
+let interiorsAmount = 80;
 
 function arrayPopulator(toPopulate, name, amount) {
   for (let i = 0; i < amount; i++) {
